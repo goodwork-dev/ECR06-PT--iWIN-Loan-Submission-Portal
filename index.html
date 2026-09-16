@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TD Bank - Investment Loan Application Portal</title>
+<style>
+  :root {
+    --td-green: #00854A;
+    --td-dark-green: #005c33;
+    --td-grey: #f4f4f4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: var(--td-grey);
+    color: #222;
+  }
+  header {
+    background: var(--td-green);
+    color: white;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+  }
+  header .env-tag {
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .container {
+    max-width: 760px;
+    margin: 32px auto;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  .banner {
+    background: var(--td-dark-green);
+    color: white;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  form { padding: 32px; }
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    padding: 16px 20px 20px;
+  }
+  legend {
+    font-weight: 600;
+    color: var(--td-dark-green);
+    padding: 0 8px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 12px 0 4px;
+    color: #333;
+  }
+  input, select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--td-green);
+  }
+  .row2 { display: flex; gap: 16px; }
+  .row2 > div { flex: 1; }
+  .helper {
+    font-size: 12px;
+    color: #777;
+    margin-top: 3px;
+  }
+  button {
+    background: var(--td-green);
+    color: white;
+    border: none;
+    padding: 13px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button:hover { background: var(--td-dark-green); }
+  button:disabled { background: #aaa; cursor: not-allowed; }
+  .status {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+  }
+  .status.success { background: #e6f4ea; color: #1e7e34; display: block; }
+  .status.error { background: #fdecea; color: #c0392b; display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TD Bank Financial Group</div>
+  <div class="env-tag">Investment Loan & Account Portal</div>
+</header>
+
+<div class="container">
+  <div class="banner">New Investment Loan Application & Account Setup</div>
+  <form id="loanForm">
+
+    <fieldset>
+      <legend>Submitting Representative</legend>
+      <div class="row2">
+        <div>
+          <label for="repName">Representative Name</label>
+          <input type="text" id="repName" name="repName" required>
+        </div>
+        <div>
+          <label for="repRole">Role / Title</label>
+          <input type="text" id="repRole" name="repRole" value="Fund & Loan Administrator, Client Operations" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Client Personal Information</legend>
+      <div class="row2">
+        <div>
+          <label for="fullName">Full Legal Name</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div>
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+      </div>
+      <label for="sin">Social Insurance Number (SIN)</label>
+      <input type="text" id="sin" name="sin" placeholder="000-000-000" required>
+      <label for="address">Home Address</label>
+      <input type="text" id="address" name="address" required>
+      <div class="row2">
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div>
+          <label for="email">Client Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Loan Details</legend>
+      <div class="row2">
+        <div>
+          <label for="loanAmount">Requested Loan Amount ($ CAD)</label>
+          <input type="number" id="loanAmount" name="loanAmount" required>
+        </div>
+        <div>
+          <label for="annualIncome">Gross Annual Income ($ CAD)</label>
+          <input type="number" id="annualIncome" name="annualIncome" required>
+        </div>
+      </div>
+      <div class="row2">
+        <div>
+          <label for="netWorth">Net Worth ($ CAD)</label>
+          <input type="number" id="netWorth" name="netWorth" required>
+        </div>
+        <div>
+          <label for="monthlyDebt">Total Monthly Debt Service ($ CAD)</label>
+          <input type="number" id="monthlyDebt" name="monthlyDebt" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Employment</legend>
+      <div class="row2">
+        <div>
+          <label for="employer">Employer / Business Name</label>
+          <input type="text" id="employer" name="employer" required>
+        </div>
+        <div>
+          <label for="yearsEmployed">Years at Current Employer</label>
+          <input type="number" id="yearsEmployed" name="yearsEmployed" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Investment Account Setup</legend>
+      <div class="row2">
+        <div>
+          <label for="lender">Lender</label>
+          <select id="lender" name="lender" required>
+            <option value="">Select...</option>
+            <option value="Manulife">Manulife</option>
+            <option value="DUCA">DUCA</option>
+          </select>
+        </div>
+        <div>
+          <label for="accountType">Account Type</label>
+          <input type="text" id="accountType" name="accountType" value="Non-Registered Investment Account" readonly style="background:#f0f0f0; color:#555;">
+          <div class="helper">Locked — this loan strategy relies on deductible interest, which only applies to a non-registered account</div>
+        </div>
+      </div>
+      <div class="row2">
+        <div>
+          <label for="accountOwnership">Account Ownership</label>
+          <select id="accountOwnership" name="accountOwnership" required>
+            <option value="">Select...</option>
+            <option value="Individual">Individual</option>
+            <option value="Joint">Joint</option>
+          </select>
+        </div>
+        <div>
+          <label for="accountStatus">Account Status</label>
+          <select id="accountStatus" name="accountStatus" required>
+            <option value="">Select...</option>
+            <option value="New Account">New Account</option>
+            <option value="Transfer-In">Transfer-In</option>
+          </select>
+        </div>
+      </div>
+      <label for="totalInvestment">Total Investment Amount ($ CAD)</label>
+      <input type="number" id="totalInvestment" name="totalInvestment" required>
+      <div class="helper">Loan proceeds + client down payment, combined</div>
+      <label for="investmentNotes">Notes (optional)</label>
+      <input type="text" id="investmentNotes" name="investmentNotes" placeholder="e.g. special instructions">
+    </fieldset>
+
+    <button type="submit" id="submitBtn">Submit Application</button>
+    <div class="status" id="statusBox"></div>
+  </form>
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRU6Jzy3kSG_aBIJivlr5DlySXAVtRpHziBFG1d_H9bFJVUivp14NtT_5iq-KAD6Q/exec";
+
+document.getElementById('loanForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('statusBox');
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+  data.submittedAt = new Date().toISOString();
+  data.confirmationNumber = "TDML-" + Math.floor(100000 + Math.random() * 900000);
+
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors", // Apps Script Web Apps typically require no-cors from external origins
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    // no-cors means we can't read the response — assume success if no network error
+    status.className = "status success";
+    status.textContent = "✅ Application submitted. Confirmation number: " + data.confirmationNumber + " — note this for your handoff and simulation sheet.";
+    btn.textContent = "Submitted";
+  })
+  .catch((err) => {
+    status.className = "status error";
+    status.textContent = "❌ Submission failed — check your connection and try again, or contact recruiting@usegoodwork.com.";
+    btn.disabled = false;
+    btn.textContent = "Submit Application";
+    console.error(err);
+  });
+});
+</script>
+
+</body>
+</html>
